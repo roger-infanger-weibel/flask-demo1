@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table with Tabulator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tabulator.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Dynamic Table with Tabulator</h1>
+    <div id="table"></div>
+    <button id="download-excel">Export to Excel</button>
+
+    <script src="{{ url_for('static', filename='tabulator.min.js') }}"></script>
+    <script>
+        // Initialize Tabulator
+        const table = new Tabulator("#table", {
+            ajaxURL: "/data", // Fetch data from Flask route
+            layout: "fitColumns",
+            columns: [
+                { title: "ID", field: "id", width: 50 },
+                { title: "Name", field: "name", width: 150 },
+                { title: "Age", field: "age", hozAlign: "center" },
+                { title: "Score", field: "score", hozAlign: "center", formatter: "progress" },
+                { title: "Status", field: "status", hozAlign: "center", formatter: "tickCross" },
+            ],
+        });
+
+        // Excel Export
+        document.getElementById("download-excel").addEventListener("click", function () {
+            table.download("xlsx", "data.xlsx");
+        });
+    </script>
+</body>
+</html>
