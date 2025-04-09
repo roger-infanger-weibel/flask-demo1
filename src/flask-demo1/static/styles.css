@@ -7,13 +7,20 @@ body {
 nav {
     background-color: #333;
     color: white;
-    padding: 1em;
+    padding: 1.5em; /* Vergrößert den Abstand */
+    font-size: 1.2em; /* Vergrößert die Schriftgröße */
+    text-align: center; /* Zentriert die Navigation */
 }
 
 nav a {
     color: white;
-    margin: 0 1em;
+    margin: 0 1.5em; /* Vergrößert den Abstand zwischen Links */
     text-decoration: none;
+    font-weight: bold; /* Macht die Schrift fett */
+}
+
+nav a:hover {
+    text-decoration: underline; /* Unterstreicht Links beim Hover */
 }
 
 .content {
