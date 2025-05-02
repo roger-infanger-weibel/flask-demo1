@@ -1,1 +1,0 @@
-Application: Base Category: COBOL Copybook Component: BAC2 

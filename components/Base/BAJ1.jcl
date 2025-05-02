@@ -1,1 +1,0 @@
-Application: Base Category: JCL Component: BAJ1 
