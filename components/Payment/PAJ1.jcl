@@ -1,1 +1,0 @@
-Application: Payment Category: JCL Component: PAJ1 

@@ -5,15 +5,15 @@
 
        DATA DIVISION.
 
-       *> Include the communication area copybook (BAC1)
+       *> Include the dclgen Db2 layouts
        COPY BAD1SQL.
  
        WORKING-STORAGE SECTION.
 
-       *> Include the communication area copybook (BAC1)
+       *> Include the Db2 host fields
        COPY BAD1REC.
 
-       *> Include the DB2 table definition copybook (BAC2)
+       *> Include the communication area copybook
        COPY BAM1.
 
        EXEC SQL INCLUDE SQLCA END-EXEC.

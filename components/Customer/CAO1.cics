@@ -1,0 +1,11 @@
+DEFINE TRANSACTION(CAO1)                     -
+       PROGRAM(CAO1)                         -
+       DESCRIPTION('Transaction for CAO1')   -
+       GROUP(BASE)                           -
+       TASKDATALOC(ANY)                      -
+       TASKDATAKEY(USER)                     -
+       TWASIZE(0)                            -
+       PROFILE(DFHCICST)                     -
+       PRIORITY(1)                           -
+       DYNAMIC(NO)                           -
+       REMOTE(NO)

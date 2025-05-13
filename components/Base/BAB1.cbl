@@ -17,12 +17,12 @@
 
        INITIALIZE-COMM-AREA.
            MOVE SPACES TO BAM1-COMM-AREA.
-           MOVE 'BAO1' TO MAIN-NAME. *> Name of the calling module
-           MOVE 'BATCHUSR' TO USER-ID.     *> User ID of the caller     
-           MOVE '1234567890' TO TRANSACTION-ID. *> Example trans ID
-           MOVE SPACES TO ERROR-MESSAGE.
-           MOVE 0 TO RETURN-CODE.
-           MOVE SPACES TO TRANSACTION-STATUS.
+       *>  MOVE 'BAB1' TO MAIN-NAME. *> Name of the calling module
+       *>  MOVE 'BATCHUSR' TO USER-ID.     *> User ID of the caller     
+       *>  MOVE '1234567890' TO TRANSACTION-ID. *> Example trans ID
+       *>  MOVE SPACES TO ERROR-MESSAGE.
+       *>  MOVE 0 TO RETURN-CODE.
+       *>  MOVE SPACES TO TRANSACTION-STATUS.
 
        CALL-BAM1.
            DISPLAY "Calling module BAM1..."
@@ -39,4 +39,5 @@
            ELSE
                DISPLAY "BAM1 encountered an error."
                DISPLAY "Error Message: " ERROR-MESSAGE
-               DISPLAY "Return Code: " RETURN-CODE.
+               DISPLAY "Return Code: " RETURN-CODE
+           .

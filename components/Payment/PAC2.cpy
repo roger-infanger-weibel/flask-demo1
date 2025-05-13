@@ -1,1 +1,0 @@
-Application: Payment Category: COBOL Copybook Component: PAC2 
