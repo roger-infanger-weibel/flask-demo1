@@ -1,0 +1,15 @@
+-- Create table CAD1
+CREATE TABLE CAD1 (
+    CUSTOMER_ID CHAR(10) NOT NULL, -- CUSTOMER ID field
+    CUSTOMER_DATE DATE NOT NULL,  -- CUSTOMER date field
+    CUSTOMER_USER CHAR(8) NOT NULL, -- CUSTOMER user
+    PRIMARY KEY (CUSTOMER_ID) -- Define CUSTOMER_ID as the primary key
+);
+
+-- Add a comment to describe the table
+COMMENT ON TABLE CAD1 IS 'Table to store CUSTOMER-like fields for CAD1';
+
+-- Add comments to describe each column
+COMMENT ON COLUMN CAD1.CUSTOMER_ID IS 'Unique identifier for the CUSTOMER';
+COMMENT ON COLUMN CAD1.CUSTOMER_DATE IS 'Date of the CUSTOMER';
+COMMENT ON COLUMN CAD1.CUSTOMER_USER IS 'User of the CUSTOMER';

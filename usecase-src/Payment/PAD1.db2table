@@ -1,0 +1,15 @@
+-- Create table PAD1
+CREATE TABLE PAD1 (
+    PAYMENT_ID CHAR(10) NOT NULL, -- PAYMENT ID field
+    PAYMENT_DATE DATE NOT NULL,  -- PAYMENT date field
+    PAYMENT_USER CHAR(8) NOT NULL, -- PAYMENT user
+    PRIMARY KEY (PAYMENT_ID) -- Define PAYMENT_ID as the primary key
+);
+
+-- Add a comment to describe the table
+COMMENT ON TABLE PAD1 IS 'Table to store PAYMENT-like fields for PAD1';
+
+-- Add comments to describe each column
+COMMENT ON COLUMN PAD1.PAYMENT_ID IS 'Unique identifier for the PAYMENT';
+COMMENT ON COLUMN PAD1.PAYMENT_DATE IS 'Date of the PAYMENT';
+COMMENT ON COLUMN PAD1.PAYMENT_USER IS 'User of the PAYMENT';
