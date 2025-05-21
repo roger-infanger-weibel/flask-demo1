@@ -1,42 +1,50 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID.  PAB1.
+       PROGRAM-ID.     PAB1.
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
+
        DATA DIVISION.
+
        WORKING-STORAGE SECTION.
 
-       *> Include the communication area copybook (PAM1)
+       COPY BAM1.
+       01  BAM1-PGM                         PIC X(8) VALUE 'BAM1'.
+
+       COPY CAM1.
+       01 CAM1-PGM                          PIC X(8) VALUE 'CAM1'.
+
        COPY PAM1.
+       01 PAM1-PGM                          PIC X(8) VALUE 'PAM1'.
 
        PROCEDURE DIVISION.
-       MAIN-PROCESS.
-           PERFORM INITIALIZE-COMM-AREA
-           PERFORM CALL-PAM1
-           PERFORM HANDLE-RETURN-CODE
-           STOP RUN.
 
-       INITIALIZE-COMM-AREA.
-           MOVE SPACES TO PAM1-COMM-AREA.
-           MOVE 'PAB1' TO MAIN-NAME. *> Name of the calling module
-           MOVE 'BATCHUSR' TO USER-ID.     *> User ID of the caller     
-           MOVE '1234567890' TO    PAYMENT-ID. *> Example trans ID
-           MOVE SPACES TO ERROR-MESSAGE.
-           MOVE 0 TO RETURN-CODE.
-           MOVE SPACES TO PAYMENT-STATUS.
+       MAIN-PROCESS.
+
+           PERFORM CALL-CAM1
+           PERFORM CALL-BAM1
+           PERFORM CALL-PAM1
+           GOBACK.
+
+       CALL-BAM1.
+
+           DISPLAY "Calling module BAM1 from CICS..."
+           CALL BAM1-PGM   USING BAM1-COMM-AREA
+              ON EXCEPTION
+                  DISPLAY "Error: Unable to call BAM1."
+              END-CALL.
+
+       CALL-CAM1.
+
+           DISPLAY "Calling module CAM1..."
+           CALL CAM1-PGM USING CAM1-COMM-AREA
+              ON EXCEPTION
+                  DISPLAY "Error: Unable to call CAM1."
+              END-CALL.
 
        CALL-PAM1.
-           DISPLAY "Calling module PAM1..."
-           CALL 'PAM1' USING PAM1-COMM-AREA
-           ON EXCEPTION
-               DISPLAY "Error: Unable to call PAM1."
-               MOVE -1 TO RETURN-CODE
-           END-CALL.
 
-       HANDLE-RETURN-CODE.
-           IF RETURN-CODE = 0
-               DISPLAY "PAM1 completed successfully."
-               DISPLAY "PAYMENT Status: " PAYMENT-STATUS
-           ELSE
-               DISPLAY "PAM1 encountered an error."
-               DISPLAY "Error Message: " ERROR-MESSAGE
-               DISPLAY "Return Code: " RETURN-CODE.
+           DISPLAY "Calling module PAM1..."
+           CALL PAM1-PGM USING PAM1-COMM-AREA
+              ON EXCEPTION
+                  DISPLAY "Error: Unable to call PAM1."
+              END-CALL.

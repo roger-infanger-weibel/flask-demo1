@@ -5,48 +5,62 @@
 
        DATA DIVISION.
 
-       *> Include the dclgen Db2 layouts
-       COPY CAD1SQL.
-       COPY BAD1SQL.
- 
        WORKING-STORAGE SECTION.
 
-       *> Include the Db2 host fields
-       COPY CAD1REC.
-       COPY BAD1REC.
+       COPY CAD1SQL.
+       COPY BAD1SQL.
+       EXEC SQL INCLUDE CAD1REC END-EXEC.
+       EXEC SQL INCLUDE BAD1REC END-EXEC.
+       EXEC SQL INCLUDE SQLCA   END-EXEC.
 
-       *> Include the communication area copybook
+       LINKAGE SECTION.
+
        COPY CAM1.
 
-       EXEC SQL INCLUDE SQLCA END-EXEC.
+       PROCEDURE DIVISION
+           USING CAM1-COMM-AREA.
 
-       PROCEDURE DIVISION.
        MAIN-PROCESS.
+
            PERFORM INITIALIZE-COMM-AREA
-           PERFORM PROCESS-CUSTOMER
+           PERFORM PROCESS-TRANSACTION
            PERFORM RETURN-TO-CALLER
-           STOP RUN.
+
+           GOBACK.
 
        INITIALIZE-COMM-AREA.
-           MOVE SPACES TO CAM1-COMM-AREA.
-           MOVE 0 TO RETURN-CODE.
-           MOVE SPACES TO ERROR-MESSAGE.
 
-       PROCESS-CUSTOMER.
+           MOVE SPACES TO CAM1-COMM-AREA.
+
+       PROCESS-TRANSACTION.
+
            EXEC SQL
-               SELECT CUSTOMER_DATE,  CUSTOMER_USER
+               SELECT TRANSACTION_DATE, TRANSACTION_USER
+               INTO :TRANSACTION-DATE, :TRANSACTION-USER
+               FROM BAD1
+               WHERE TRANSACTION_ID = :BAD1-REC.TRANSACTION-ID
+           END-EXEC.
+
+
+           EXEC SQL
+               SELECT CUSTOMER_DATE, CUSTOMER_USER
                INTO :CUSTOMER-DATE, :CUSTOMER-USER
                FROM CAD1
                WHERE CUSTOMER_ID = :CAD1-REC.CUSTOMER-ID
-           END-EXEC
+           END-EXEC.
+
            IF SQLCODE = 0
                MOVE 'S' TO CUSTOMER-STATUS
            ELSE
                MOVE 'E' TO CUSTOMER-STATUS
                MOVE SQLERRMC TO ERROR-MESSAGE
-               MOVE SQLCODE TO RETURN-CODE.
+               MOVE SQLCODE TO RETURN-CD.
+
+
 
        RETURN-TO-CALLER.
+
            DISPLAY "Module CAM1 ended with status: " CUSTOMER-STATUS.
+
            IF CUSTOMER-STATUS = 'E'
                DISPLAY "Error: " ERROR-MESSAGE.

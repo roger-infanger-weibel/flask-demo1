@@ -1,52 +1,54 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID.  PAM1.
+       PROGRAM-ID.     PAM1.
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
 
        DATA DIVISION.
 
-       *> Include the dclgen Db2 layouts
-       COPY PAD1SQL.
-       COPY BAD1SQL.
- 
        WORKING-STORAGE SECTION.
 
-       *> Include the Db2 host fields
-       COPY PAD1REC.
-       COPY BAD1REC.
+       COPY PAD1SQL.
+       COPY CAD1SQL.
+       EXEC SQL INCLUDE PAD1REC END-EXEC.
+       EXEC SQL INCLUDE CAD1REC END-EXEC.
+       EXEC SQL INCLUDE SQLCA   END-EXEC.
 
-       *> Include the communication area copybook
+       LINKAGE SECTION.
+
+       COPY BAM1.
        COPY PAM1.
 
-       EXEC SQL INCLUDE SQLCA END-EXEC.
+       PROCEDURE DIVISION
+           USING PAM1-COMM-AREA.
 
-       PROCEDURE DIVISION.
        MAIN-PROCESS.
+
            PERFORM INITIALIZE-COMM-AREA
            PERFORM PROCESS-PAYMENT
-           PERFORM RETURN-TO-CALLER
-           STOP RUN.
+           GOBACK.
 
        INITIALIZE-COMM-AREA.
+
            MOVE SPACES TO PAM1-COMM-AREA.
-           MOVE 0 TO RETURN-CODE.
-           MOVE SPACES TO ERROR-MESSAGE.
 
        PROCESS-PAYMENT.
+
            EXEC SQL
-               SELECT PAYMENT_DATE,  PAYMENT_USER
+               SELECT CUSTOMER_DATE, CUSTOMER_USER
+               INTO :CUSTOMER-DATE, :CUSTOMER-USER
+               FROM CAD1
+               WHERE CUSTOMER_ID = :CAD1-REC.CUSTOMER-ID
+           END-EXEC.
+
+
+           EXEC SQL
+               SELECT PAYMENT_DATE, PAYMENT_USER
                INTO :PAYMENT-DATE, :PAYMENT-USER
-               FROM PAD1
+               FROM    PAD1
                WHERE PAYMENT_ID = :PAD1-REC.PAYMENT-ID
-           END-EXEC
+           END-EXEC.
+
            IF SQLCODE = 0
                MOVE 'S' TO PAYMENT-STATUS
            ELSE
                MOVE 'E' TO PAYMENT-STATUS
-               MOVE SQLERRMC TO ERROR-MESSAGE
-               MOVE SQLCODE TO RETURN-CODE.
-
-       RETURN-TO-CALLER.
-           DISPLAY "Module PAM1 ended with status: "    PAYMENT-STATUS.
-           IF PAYMENT-STATUS = 'E'
-               DISPLAY "Error: " ERROR-MESSAGE.
