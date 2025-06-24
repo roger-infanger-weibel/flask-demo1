@@ -1,0 +1,277 @@
+# Generate Table
+This table was generated using the md file (python)
+<table>
+<tr>
+<th>Category</th>
+<th>Requirement</th>
+<th>Fit Criteria</th>
+<th>Owner</th>
+<th>Coverage</th>
+</tr>
+<tr>
+<td>Deploy Basics (automated)</td>
+<td>DEP#ART Storage artifact repository</td>
+<td>DEP#ART_Integrate_Nexus</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>Deploy Basics (automated)</td>
+<td>DEP#DECOM Support decommissioning of artefacts</td>
+<td>DEP#DECOM_Delete_Member</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>Deploy Basics (automated)</td>
+<td>DEP#DECOM Support decommissioning of artefacts</td>
+<td>DEP#DECOM_Recover_Member</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>Deploy Basics (automated)</td>
+<td>DEP#MTARG Copy same source file parts to multi targets (load, loadcics, linklib)</td>
+<td>DEP#MTARG_MultiLoadTargets</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>Deploy Basics (automated)</td>
+<td>DEP#SUBSYS Mainframe Subsys supports</td>
+<td>DEP#SUBSYS_Perform_Db2bind_Pkg_of_new_version</td>
+<td>us</td>
+<td>prototype</td>
+</tr>
+<tr>
+<td>Deploy Basics (automated)</td>
+<td>DEP#SUBSYS Mainframe Subsys supports</td>
+<td>DEP#SUBSYS_Perform_Db2bind_Plan</td>
+<td>us</td>
+<td>prototype</td>
+</tr>
+<tr>
+<td>Deploy Basics (automated)</td>
+<td>DEP#SUBSYS Mainframe Subsys supports</td>
+<td>DEP#SUBSYS_Restore_Db2bind_Plan</td>
+<td>us</td>
+<td>prototype</td>
+</tr>
+<tr>
+<td>Deploy Basics (automated)</td>
+<td>DEP#SUBSYS Mainframe Subsys supports</td>
+<td>DEP#SUBSYS_Suppress_restore_Db2bind_of_old_version</td>
+<td>us</td>
+<td>prototype</td>
+</tr>
+<tr>
+<td>Deploy Basics (automated)</td>
+<td>DEP#SUBSYS Mainframe Subsys supports</td>
+<td>DEP#SUBSYS_Postproc_LLA_Refresh</td>
+<td>us</td>
+<td>prototype</td>
+</tr>
+<tr>
+<td>Deploy Basics (automated)</td>
+<td>DEP#SUBSYS Mainframe Subsys supports</td>
+<td>DEP#SUBSYS_Postproc_CICS_PhaseIn</td>
+<td>us</td>
+<td>prototype</td>
+</tr>
+<tr>
+<td>Deploy Basics (automated)</td>
+<td>DEP#SUBSYS Mainframe Subsys supports</td>
+<td>DEP#SUBSYS_Postproc_Custom</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>Deploy Basics (automated)</td>
+<td>DEP#SEQ Sequence of deployments can be specified (application)</td>
+<td>DEP#SEQ_Sequence_Processing</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>Deploy Basics (automated)</td>
+<td>DEP#SEQ Sequence of deployments can be specified (application)</td>
+<td>DEP#SEQ_Minimal_Impact_Processing</td>
+<td>us</td>
+<td>prototype</td>
+</tr>
+<tr>
+<td>DeployReports (automated)</td>
+<td>DEP#ALT:Audit Log Trail for all deployments</td>
+<td>DEP#ALT_WriteEvdFile_Deploy</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>DeployReports (automated)</td>
+<td>DEP#ALT:Audit Log Trail for all deployments</td>
+<td>DEP#ALT_WriteEvdFile_Rollback</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>DeployReports (automated)</td>
+<td>DEP#REP Deployment reports</td>
+<td>DEP#REP_Promotion_Status_Report</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>DeployReports (automated)</td>
+<td>DEP#REP Deployment reports</td>
+<td>DEP#REP_Installation_Status_Report</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>DeployReports (automated)</td>
+<td>DEP#REP Deployment reports</td>
+<td>DEP#REP_Package_Component_Report</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>DeployReports (automated)</td>
+<td>DEP#CVO Component Version Overview (what version on all deploy sites)</td>
+<td>DEP#CVO_Member_Report</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>DeployReleases (automated)</td>
+<td>DEP#RELBDL Bundling and scheduling of releases into production environments</td>
+<td>DEP#RELBDL_Multi_Repo_Support</td>
+<td>ibm</td>
+<td>+ request</td>
+</tr>
+<tr>
+<td>DeployReleases (automated)</td>
+<td>DEP#RELHUM Human triggered deployments</td>
+<td>DEP#RELHUM_Manual_Release_Deployments</td>
+<td>us</td>
+<td>prototype</td>
+</tr>
+<tr>
+<td>DeployReleases (automated)</td>
+<td>DEP#RELSEQ Sequence of deployments can be specified (cross application/release)</td>
+<td>DEP#RELSEQ_Release_Train_Sequence</td>
+<td>ibm</td>
+<td>+ request</td>
+</tr>
+<tr>
+<td>DeployReleases (automated)</td>
+<td>DEP#RELHCK Dependent Release Support</td>
+<td>DEP#RELHCK_Dependent_Release_check_possible</td>
+<td>ibm</td>
+<td>+ request</td>
+</tr>
+<tr>
+<td>DeployReleases (automated)</td>
+<td>DEP#INTF Report/Document Deployment Progress =own</td>
+<td>DEP#INTF_ServiceNow_Worklog</td>
+<td>us</td>
+<td>prototype</td>
+</tr>
+<tr>
+<td>DeployReleases (automated)</td>
+<td>DEP#INTF Report/Document Deployment Progress =own</td>
+<td>DEP#INTF_ServiceNow_Reference_Tracking</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>DeployReleases (automated)</td>
+<td>DEP#SHLPRT Shared Libraries (Runtime) vs. Gitlab Runner Technical Owners (protect application assets)</td>
+<td>DEP#SHLPRT_Protect_Appl_Assets</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>DeployOperating (automated)</td>
+<td>DEP#RESTART If parts of deployments fail, restarts are possibles</td>
+<td>DEP#RESTART_LastfailedPosition</td>
+<td>ibm</td>
+<td>+ request</td>
+</tr>
+<tr>
+<td>DeployOperating (automated)</td>
+<td>DEP#RBFULL Rollback of full deployment</td>
+<td>DEP#RBFULL_Rollback_FullDeploy</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>DeployOperating (automated)</td>
+<td>DEP#RBPART Rollback of parts of deployments</td>
+<td>DEP#RBPART_PartRollback_Filter</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>DeployOperating (automated)</td>
+<td>DEP#RBPART Rollback of parts of deployments</td>
+<td>DEP#RBPART_Prod_Security</td>
+<td>us</td>
+<td>prototype</td>
+</tr>
+<tr>
+<td>DeployOperating (automated)</td>
+<td>DEP#RETRY Automated retry deploy features in some specific cases</td>
+<td>DEP#RETRY_Automated_Cases</td>
+<td>ibm</td>
+<td>+ request</td>
+</tr>
+<tr>
+<td>DeployOperating (automated)</td>
+<td>DEP#SPEED Fast and load balanced copy of members. – if mass deployments are done</td>
+<td>DEP#SPEED_Release_Capacity</td>
+<td>us</td>
+<td>prototype</td>
+</tr>
+<tr>
+<td>DeployAdmin (doc)</td>
+<td>DEP#TDOC Sufficient Technical Documentation</td>
+<td>DEP#TDOC_Doc_on_all_Jinja_Variables</td>
+<td>ibm</td>
+<td>+ request</td>
+</tr>
+<tr>
+<td>DeployAdmin (doc)</td>
+<td>DEP#ENDT Easy setup for demand</td>
+<td>DEP#ENDT_Setup_new_component_types</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>DeployAdmin (doc)</td>
+<td>DEP#UPG Upgrade to latest version is easy to automate and process</td>
+<td>DEP#UPG_MultiVersion_Setup</td>
+<td>ibm</td>
+<td>= feature</td>
+</tr>
+<tr>
+<td>DeployAdmin (doc)</td>
+<td>DEP#UPG Upgrade to latest version is easy to automate and process</td>
+<td>DEP#UPG_Improved_Errors</td>
+<td>ibm</td>
+<td>+ request</td>
+</tr>
+<tr>
+<td>DeployAdmin (doc)</td>
+<td>DEP#UPG Upgrade to latest version is easy to automate and process</td>
+<td>DEP#UPG_Technical_dependencies</td>
+<td>us</td>
+<td>prototype</td>
+</tr>
+<tr>
+<td>DeployAdmin (doc)</td>
+<td>DEP#UPG Upgrade to latest version is easy to automate and process</td>
+<td>DEP#UPG_LiveHealthCheck</td>
+<td>us</td>
+<td>prototype</td>
+</tr>
+</table>
